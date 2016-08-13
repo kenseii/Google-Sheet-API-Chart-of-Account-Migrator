@@ -17,22 +17,14 @@ try:
 except ImportError:
     flags = None
 
-# If modifying these scopes, delete your previously saved credentials
-# at ~/.credentials/sheets.googleapis.com-python-quickstart.json
+
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Google Sheets API Python Quickstart'
 
 
 def get_credentials():
-    """Gets valid user credentials from storage.
-
-    If nothing has been stored, or if the stored credentials are invalid,
-    the OAuth2 flow is completed to obtain the new credentials.
-
-    Returns:
-        Credentials, the obtained credential.
-    """
+   
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
     if not os.path.exists(credential_dir):
@@ -53,12 +45,7 @@ def get_credentials():
     return credentials
 
 def main():
-    """Shows basic usage of the Sheets API.
-
-    Creates a Sheets API service object and prints the names and majors of
-    students in a sample spreadsheet:
-    https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-    """
+    
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
     discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
@@ -76,10 +63,10 @@ def main():
     if not values:
         print('No data found.')
     else:
-        #print('Name, Major:')
-        #client = FrappeClient("http://192.168.1.34:8000", "administrator", "chillington")
+        
+        client = FrappeClient("http://192.168.1.34:8000", "administrator", "chillington")
         for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
+           
             print('%s, %s,%s,%s,%s,%s' % (row[0],row[1],row[2],row[3],row[4],row[5]))
             pname= row[5]
             code = row[0] + row[1] + row[2] + row[3] + row[4]
@@ -116,7 +103,7 @@ def main():
             else:
                 print ("No parent")
                 parent = "Wheelbarrow"
-"""
+
             account = {"doctype": "Account",
                            "company": "WB",
                            "parent_account":parent,
@@ -130,7 +117,7 @@ def main():
             except:
                 pass
 
-"""
+
 
                 
 
